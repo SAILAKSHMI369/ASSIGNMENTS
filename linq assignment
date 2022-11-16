@@ -1,0 +1,274 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace LINQ_Assignments
+{
+    internal class Employee
+    {
+        public int id { get; set; }
+        public string firstname { get; set; }
+        public string lastname { get; set; }
+        public string title { get; set; }
+        public DateTime DOB { get; set; }
+        public DateTime DOJ { get; set; }
+        public string city { get; set; }
+        public static void Main(string[] args)
+        {
+            List<Employee> empList = new List<Employee>();
+            Employee employee1 = new Employee
+            {
+                id = 1001,
+                firstname = " Malcolm",
+                lastname = "Daruwalla",
+                title = "Manager",
+                DOB = DateTime.Parse(" 16 / 11 / 1984"),
+                DOJ = DateTime.Parse("8 / 6 / 2011"),
+                city = " Mumbai"
+            };
+            empList.Add(employee1);
+            Employee employee2 = new Employee
+            {
+                id = 1002,
+                firstname = " Adsin",
+                lastname = "Dhalla",
+                title = "AsstManager",
+                DOB = DateTime.Parse("20 / 08 / 1984"),
+                DOJ = DateTime.Parse("7 / 7 / 2012"),
+                city = " Mumbai"
+            };
+            empList.Add(employee2);
+            Employee employee3 = new Employee
+            {
+                id = 1003,
+                firstname = " Madhavi",
+                lastname = "Oza",
+                title = "Consultant",
+                DOB = DateTime.Parse("14 / 11 / 1987"),
+                DOJ = DateTime.Parse("12 / 4 / 2015"),
+                city = "Pune"
+            };
+            empList.Add(employee3);
+            Employee employee4 = new Employee
+            {
+                id = 1004,
+                firstname = " Saba",
+                lastname = "Shaikh",
+                title = "SE",
+                DOB = DateTime.Parse(" 3 / 6 / 1990"),
+                DOJ = DateTime.Parse("2 / 2 / 2016"),
+                city = "Pune"
+            };
+            empList.Add(employee4);
+            Employee employee5 = new Employee
+            {
+                id = 1005,
+                firstname = " Nazia",
+                lastname = "Shaikh",
+                title = "SE",
+                DOB = DateTime.Parse(" 8 / 3 / 1991"),
+                DOJ = DateTime.Parse("2 / 2 / 2016"),
+                city = "Mumbai"
+            };
+            empList.Add(employee5);
+            Employee employee6 = new Employee
+            {
+                id = 1006,
+                firstname = " Amit",
+                lastname = "Pathak",
+                title = "Consultant",
+                DOB = DateTime.Parse("7 / 11 / 1989"),
+                DOJ = DateTime.Parse("8 / 8/ 2014"),
+                city = "chennai"
+            };
+            empList.Add(employee6);
+            Employee employee7 = new Employee
+            {
+                id = 1007,
+                firstname = " Vijay",
+                lastname = "Natrajan",
+                title = "Consultant",
+                DOB = DateTime.Parse("2 / 12 / 1989"),
+                DOJ = DateTime.Parse("1 / 6 / 2015"),
+                city = "Mumbai"
+            };
+            empList.Add(employee7);
+            Employee employee8 = new Employee
+            {
+                id = 1008,
+                firstname = "Rahul",
+                lastname = "Dubey",
+                title = "Associate",
+                DOB = DateTime.Parse(" 11 / 11 / 1993"),
+                DOJ = DateTime.Parse("6/ 11 / 2014"),
+                city = "Chennai"
+            };
+            empList.Add(employee8);
+            Employee employee9 = new Employee
+            {
+                id = 1009,
+                firstname = "Suresh",
+                lastname = "Mistry",
+                title = "Associate",
+                DOB = DateTime.Parse("12 / 8 / 1992"),
+                DOJ = DateTime.Parse(" 3 / 12 / 2014"),
+                city = "Chennai"
+            };
+            empList.Add(employee9);
+            Employee employee10 = new Employee
+            {
+                id = 1010,
+                firstname = "Sumit",
+                lastname = "Shah",
+                title = "Manager",
+                DOB = DateTime.Parse("12 / 4 / 1991"),
+                DOJ = DateTime.Parse("2 / 1 / 2016"),
+                city = "Pune"
+            };
+            empList.Add(employee10);
+            IEnumerable<Employee> EmployeeQuery1 = from Employee in empList
+                                                  where Employee.id > 1000
+                                                  select Employee;
+            foreach (Employee e in EmployeeQuery1)
+            {
+                //call to the string method
+                Console.WriteLine("{0},  {1},  {2},  {3},  {4},  {5},  {6}", e.id, e.firstname, e.lastname, e.title, e.DOB, e.DOJ, e.city);
+            }
+            Console.WriteLine();
+            IEnumerable<Employee> EmployeeQuery2 = from Employee in empList
+                                                  where Employee.city != "Mumbai"
+                                                  select Employee;
+            foreach (Employee e in EmployeeQuery2)
+            {
+                //call to the string method
+                Console.WriteLine("{0},  {1},  {2},  {3},  {4},  {5},  {6}", e.id, e.firstname, e.lastname, e.title, e.DOB, e.DOJ, e.city);
+            }
+            Console.WriteLine();
+            IEnumerable<Employee> EmployeeQuery3 = from Employee in empList
+                                                   where Employee.title == "AsstManager"
+                                                   select Employee;
+
+            foreach (Employee e in EmployeeQuery3)
+            {
+                //call to the string method
+                Console.WriteLine("{0},  {1},  {2},  {3},  {4},  {5},  {6}", e.id, e.firstname, e.lastname, e.title, e.DOB, e.DOJ, e.city);
+            }
+            Console.WriteLine();
+            IEnumerable<Employee> EmployeeQuery4 = from Employee in empList
+                                                   where Employee.lastname == "S"
+                                                   select Employee;
+            foreach (Employee e in EmployeeQuery4)
+            {
+                //call to the string method
+                Console.WriteLine("{0},  {1},  {2},  {3},  {4},  {5},  {6}", e.id, e.firstname, e.lastname, e.title, e.DOB, e.DOJ, e.city);
+            }
+            Console.WriteLine();
+            IEnumerable<Employee> EmployeeQuery5 = from Employee in empList
+                                                   where Employee.DOJ < DateTime.Parse("1/1/2015")
+                                                   select Employee;
+            foreach (Employee e in EmployeeQuery5)
+            {
+                //call to the string method
+                Console.WriteLine("{0},  {1},  {2},  {3},  {4},  {5},  {6}", e.id, e.firstname, e.lastname, e.title, e.DOB, e.DOJ, e.city);
+            }
+            Console.WriteLine();
+            IEnumerable<Employee> EmployeeQuery6 = from Employee in empList
+                                                   where Employee.DOJ > DateTime.Parse("1/1/1990")
+                                                   select Employee;
+            foreach (Employee e in EmployeeQuery6)
+            {
+                //call to the string method
+                Console.WriteLine("{0},  {1},  {2},  {3},  {4},  {5},  {6}", e.id, e.firstname, e.lastname, e.title, e.DOB, e.DOJ, e.city);
+            }
+            Console.WriteLine();
+            IEnumerable<Employee> EmployeeQuery7 = from Employee in empList
+                                                   where Employee.title == "Consultant" || Employee.title == "Associate"
+                                                   select Employee;
+            foreach (Employee e in EmployeeQuery7)
+            {              
+                Console.WriteLine("{0},  {1},  {2},  {3},  {4},  {5},  {6}", e.id, e.firstname, e.lastname, e.title, e.DOB, e.DOJ, e.city);
+            }
+            Console.WriteLine();
+            Console.WriteLine("--------employees count-------");
+            Console.WriteLine("total no. of employees: {0}", empList.Count);
+            Console.WriteLine();
+            int EmployeeQuery9 = (from Employee in empList
+                                  where Employee.city == "Chennai"
+                                  select Employee).Count();
+            Console.WriteLine();
+            Console.WriteLine("no. of employee in Chennai: {0}", EmployeeQuery9);
+            Console.WriteLine();
+            int EmployeeQuery10 = empList.Max(x => x.id);
+            Console.WriteLine("------Highest Employee in Employee database-----");
+            Console.WriteLine("highest  id : {0}", EmployeeQuery10);
+            Console.WriteLine();
+            IEnumerable<Employee> EmployeeQuery11 = from Employee in empList
+                                                   where Employee.DOJ > DateTime.Parse("1/1/2015")
+                                                   select Employee;
+            foreach (Employee e in EmployeeQuery11)
+            {
+               
+                Console.WriteLine("{0},  {1},  {2},  {3},  {4},  {5},  {6}", e.id, e.firstname, e.lastname, e.title, e.DOB, e.DOJ, e.city);
+            }
+            Console.WriteLine();
+
+            IEnumerable<Employee> EmployeeQuery12 = from Employee in empList
+                                                   where Employee.title != "Associate"
+                                                   select Employee;
+            foreach (Employee e in EmployeeQuery12)
+            {
+                //call to the string method
+                Console.WriteLine("{0},  {1},  {2},  {3},  {4},  {5},  {6}", e.id, e.firstname, e.lastname, e.title, e.DOB, e.DOJ, e.city);
+            }
+            Console.WriteLine();
+
+            var EmployeeQuery13 = from Employee in empList
+                                  group Employee by new
+                                  {
+                                      Employee.city,
+                                  } into Employees
+                                  select new
+                                  {
+                                      city = Employees.Key.city,
+                                      count_city = Employees.OrderBy(o => o.city)
+                                  };
+            foreach(var i in EmployeeQuery13)
+            {
+                Console.WriteLine($"city: {i.city} number of employees = {i.count_city.Count()}");
+                Console.WriteLine();
+
+                var EmployeeQuery14 = from Employee in empList group Employee by new { Employee.city, Employee.title, } into Employee2 select new { city = Employee2.Key.city, title = Employee2.Key.title, Count_city = Employee2.OrderBy(x => x.city), Count_title = Employee2.OrderBy(x => x.title) }; 
+                Console.WriteLine("---------------------------------------------------");
+                foreach (var item in EmployeeQuery14)
+                {
+                    Console.WriteLine($"city: {item.city} , title: {item.title} ----Number of Employees = {item.Count_city.Count()}");
+                    Console.WriteLine();
+                    Console.WriteLine($"title: {item.title}"); 
+                }
+                var EmployeeQuery15 = empList.Select(en => en.city);
+                Console.WriteLine("--------youngest Employee--------");
+                Console.WriteLine("youngest employee: {0}", EmployeeQuery15.Max());
+                Console.WriteLine();
+
+                Console.ReadLine();
+
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
