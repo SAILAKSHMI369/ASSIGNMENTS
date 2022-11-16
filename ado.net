@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.Common;
+using System.Data.SqlClient;
+
+namespace ado.net
+{
+    internal class Program
+    {
+        public static void Main()
+        {
+
+
+            SqlConnection con = new SqlConnection("Data Source = sailakshmiVM;Initial Catalog = employee; Integrated Security = True");
+            con.Open();
+            SqlCommand cmd = new SqlCommand(" select * from emp", con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                string id = dr["id"].ToString();
+                string Firstname = dr["Firstname"].ToString();
+                string Lastname = dr["Lastname"].ToString();
+                string City = dr["City"].ToString();
+                string Country = dr["Country"].ToString();
+                string Phone = dr["Phone"].ToString();
+
+                Console.WriteLine(id + " " + Firstname + " " + Lastname + " " + City + " " + Country + " " + Phone);
+
+
+
+
+            }
+            dr.Close();
+            con.Close();
+            Console.ReadLine();
+
+
+        }
+    }
+}
